@@ -1,0 +1,7 @@
+<form action="/<%=article.id%>?_method=PUT" method="POST">
+  <input type="text" name="title" id="title" value="<%= article.title %>" placeholder="<%= article.title %>" >
+  <textarea name="text" id="text" ><%=article.text%></textarea>
+  <input type="SUBMIT" value="UPDATE">
+</form>
+
+<a href="/">BACK</a>

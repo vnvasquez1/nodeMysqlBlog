@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= "title" %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>title</h1>
+    <p>Welcome to <%= "title" %></p>
+    <a href = "/new">CREATE A NEW ARTICLE</a>
+    <% articles.forEach(function(article){%>
+      <div>
+        <h2><a href="/<%=article.id%>"><%=article.title%></a></h2>
+        <small><%= article.created_at%></small> 
+        <p><%=article.text%></p>
+        <form action="/<%=article.id%>?_method=DELETE"  method="POST">
+           <input type="SUBMIT" VALUE="DELETE"> 
+        </form>
+        <form action="/<%=article.id%>/edit"  method="GET">
+           <input type="SUBMIT" VALUE="EDIT"> 
+        </form>
+        </div>
+    <% });%>
+  </body>
+</html>
