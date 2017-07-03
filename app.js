@@ -7,8 +7,8 @@ var bodyParser   = require('body-parser');
 var methodOverride = require('method-override');
 //var mysql        = require('mysql');
 //var faker        = require('faker');
-var index = require('./routes/index');
-var users = require('./routes/users');
+var index = require('./app_server/routes/index');
+var users = require('./app_server/routes/users');
 var routesApi = require('./app_api/routes/index');
 
 var app = express();
@@ -16,7 +16,7 @@ var app = express();
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname,'app_server' ,'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
