@@ -5,6 +5,11 @@ var connection = mysql.createConnection({
   database:'blog_db'
 })
 
+var connectionSlave = mysql.createConnection({
+  host:'192.168.1.182',
+  database:'blog_db'
+})
+
 
 module.exports.postArticle = function(req,res){
   var q = "INSERT INTO articles (title,text) VALUES ('"
@@ -21,7 +26,7 @@ module.exports.postArticle = function(req,res){
 
 module.exports.getArticles = function(req,res){
    var q = "SELECT * FROM articles ORDER BY created_at DESC";
-   connection.query(q,function(error,response){
+   connectionSlave.query(q,function(error,response){
      if(error)throw error;
      res.json(response);
    }); 
@@ -30,7 +35,7 @@ module.exports.getArticles = function(req,res){
 module.exports.getSingleArticle = function(req,res){
    var q = "SELECT * FROM articles WHERE id = "
           + req.params.id;
-   connection.query(q,function(error,response){
+   connectionSlave.query(q,function(error,response){
      if(error)throw error;
      res.json(response[0]);
    }); 
